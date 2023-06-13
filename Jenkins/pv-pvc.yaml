@@ -1,0 +1,26 @@
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: pv-jenkins
+  namespace: jenkins-ns
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 8Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/jenkins/jenkins-home"
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: claim-jenkins
+  namespace: jenkins-ns
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 8Gi
