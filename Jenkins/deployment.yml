@@ -9,74 +9,35 @@ kind: Deployment
 metadata:
   name: jenkins
   namespace: jenkins
+  labels:
+    app: jenkins
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: jenkins-server
+      app: jenkins
   template:
     metadata:
       labels:
-        app: jenkins-server
+        app: jenkins
     spec:
+      serviceAccountName: jenkins-admin
       containers:
         - name: jenkins
           image: ahmedemad2025/jenkins-kubectl-docker:v3
           ports:
-            - name: http-port
-              containerPort: 8080
-            - name: jnenkins-port
-              containerPort: 50000
-
+            - containerPort: 8080
           volumeMounts:
-            - name: jenkins-data
-              mountPath: /var/jenkins_home
-
-            - name: dockersock
-              mountPath: /var/run/docker.sock
-            
-            - name: docker
-              mountPath: /usr/bin/docker
-              subPath: docker
-
-            - name: kubernetes
-              mountPath: /usr/bin/kubectl
-              subPath: kubectl
-
-      
-      initContainers:
-        - name: init-docker
-          image: docker
-          command: ["cp","/usr/local/bin/docker", "/opt/tmp"]
-       
-            
-          volumeMounts:  
-            - name: docker
-              mountPath: /opt/tmp
-
-        - name: init-k8s
-          image: alpine/k8s:1.23.13
-          command: ["cp","/usr/bin/kubectl","/opt/temp"]
-
-          volumeMounts:
-            - name: kubernetes
-              mountPath: "/opt/temp"
-
-        
+          - name: jenkins-vol
+            mountPath: /var/jenkins_home
+          - name: docker
+            mountPath: /var/run
       volumes:
-        - name: jenkins-data
+        - name: jenkins-vol
           emptyDir: {}
-
         - name: docker
-          emptyDir: {}
-        
-        - name: dockersock
           hostPath:
-            path: /var/run/docker.sock
-
-        - name: kubernetes
-          emptyDir: {}
-        
+            path: /var/run        
 ---
 apiVersion: v1
 kind: Service
