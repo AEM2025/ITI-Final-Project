@@ -43,3 +43,10 @@ sudo ./aws/install
   ```
   aws eks update-kubeconfig --region us-east-1 --name my-eks
   ```
+
+5 - Build and Push Jenkins image:
+```
+docker build . -t ahmedemad2025/jenkins-kubectl-docker:v3
+docker login docker.io     #Enter username and password
+docker push ahmedemad2025/jenkins-kubectl-docker:v3
+```
