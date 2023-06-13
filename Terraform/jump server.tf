@@ -5,7 +5,8 @@ resource "aws_instance" "my-jump-server" {
   subnet_id = aws_subnet.pub-sub1.id
   vpc_security_group_ids = [aws_security_group.pub-secgroup.id]
   key_name = "key"
-  user_data = "${file("Install_kubectl.sh")}"
+  # Need to be changed
+  # user_data = "${file("Install_kubectl.sh")}"
   tags = {
     Name = "my-jump-server"
   }
