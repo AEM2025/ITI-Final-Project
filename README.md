@@ -50,3 +50,5 @@ docker build . -t ahmedemad2025/jenkins-kubectl-docker:v3
 docker login docker.io     #Enter username and password
 docker push ahmedemad2025/jenkins-kubectl-docker:v3
 ```
+
+6 - SSH to private workernode and install docker: `sudo yum install docker --disablerepo=docker-ce-stable`
