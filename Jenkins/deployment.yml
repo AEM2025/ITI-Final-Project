@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: jenkins
-          image: ahmedemad2025/jenkins-kubectl-docker:v3
+          image: ahmedemad2025/jenkins-kubectl-docker
           ports:
             - name: http-port
               containerPort: 8080
