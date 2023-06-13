@@ -81,14 +81,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: jenkins-service
+  name: loadbalancer
   namespace: jenkins
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    service.beta.kubernetes.io/aws-load-balancer-cross-zone-load-balancing-enabled: 'true'
 spec:
-  type: LoadBalancer
   selector:
-    app: jenkins-server
+    app: jenkins
+  type: LoadBalancer
   ports:
-      # By default and for convenience, the `targetPort` is set to the same value as the `port` field.
-    - port: 8080
-      targetPort: 8080  
-
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
