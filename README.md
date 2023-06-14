@@ -64,3 +64,7 @@ sudo dockerd
 8 - Add a webhook to the rpo, so the pipeline will start immediately whenever you push anything to the repo.
 
 9 - Demo:
+
+<video width="320" height="240" controls>
+  <source src="https://github.com/AEM2025/ITI-Final-Project/blob/master/Demo.mp4" type="video/mp4">
+</video>
