@@ -52,9 +52,15 @@ docker push ahmedemad2025/jenkins-kubectl-docker:v3
 ```
 
 6 - SSH to private workernode and install docker: `sudo yum install docker --disablerepo=docker-ce-stable`
+
 7 - Configuration:
 ```
 sudo systemctl status docker
 sudo systemctl start docker
 rm -rf /var/run/docker.sock
 sudo dockerd
+```
+
+8 - Add a webhook to the rpo, so the pipeline will start immediately whenever you push anything to the repo.
+
+9 - Demo:
