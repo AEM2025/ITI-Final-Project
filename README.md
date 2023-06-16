@@ -1,6 +1,11 @@
 # ITI-Final-Project
 Creating infrastructure and deployment process using Terraform (IaC) to implement and configue secure Elastic Kubernetes Service (EKS) on Amazon Web Service (AWS) to host Jenkins on the cluster.
 
+<p align="center">
+  <img src="https://github.com/AEM2025/ITI-Final-Project/blob/master/1686790689984.jpg" alt="Intro Photo">
+</p>
+
+
 ### Installation
 1 - Install infrastructure with terraform
 ```
