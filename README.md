@@ -10,9 +10,9 @@ Creating infrastructure and deployment process using Terraform (IaC) to implemen
 1 - Install infrastructure with terraform
 ```
 cd Terraform
-terraform init                     #initializes a working directory and installs plugins for google provider
+terraform init                     #initializes a working directory and installs plugins for AWS provider
 terraform plan                     #to check the changes
-terraform apply -auto-approve      #creating the resources on GCP
+terraform apply -auto-approve      #creating the resources on AWS
 ```
 
 2 - SSH into the Jump server to install `kubectl`:
